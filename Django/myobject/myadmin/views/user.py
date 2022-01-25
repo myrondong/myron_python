@@ -6,6 +6,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from datetime import datetime
 import hashlib
+import random
 
 
 def index(request, p_index=1):
@@ -42,13 +43,20 @@ def index(request, p_index=1):
 
 def add(request):
     """加载信息添加表单"""
-    return render(request, 'myadmin/index/index.html')
+    return render(request, 'myadmin/user/add.html')
 
 
 def insert(request):
     """执行信息添加"""
     try:
         ob = User()
+        # 将当前员工信息的密码做md5处理
+        md5 = hashlib.md5()
+        n = random.randint(100000, 999999)
+        s = request.POST['password'] + str(n)  # 从表单中获取密码并添加干扰值
+        md5.update(s.encode('utf-8'))  # 将要产生md5的子串放进去
+        ob.password_hash = md5.hexdigest()  # 获取md5值
+        ob.password_salt = n
         ob.username = request.POST['username']
         ob.nickname = request.POST['nickname']
         ob.status = 1
@@ -59,7 +67,7 @@ def insert(request):
     except Exception as err:
         context = {'info': '添加失败'}
         print(err)
-    return render(request, 'myadmin/info。html', context)
+    return render(request, 'myadmin/info.html', context)
 
 
 def delete(request):
