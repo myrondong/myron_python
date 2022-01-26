@@ -13,8 +13,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -33,12 +33,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/myadmin/index" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\git_reposittory\myron_python\Django\myobject\templates\myadmin\index" />
+      <recent name="F:\git_reposittory\myron_python\Django\myobject\templates\myadmin" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\git_reposittory\myron_python\Django\myobject\templates\web" />
     </key>
@@ -83,7 +88,7 @@
       <workItem from="1643002366807" duration="9365000" />
       <workItem from="1643075447352" duration="13109000" />
       <workItem from="1643094939330" duration="6866000" />
-      <workItem from="1643160590587" duration="3012000" />
+      <workItem from="1643160590587" duration="14000000" />
     </task>
     <servers />
   </component>
@@ -91,6 +96,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="651" y="279" key="#Notifications" timestamp="1643178263326">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="651" y="279" key="#Notifications/0.0.1536.834@0.0.1536.834" timestamp="1643178263326" />
     <state x="169" y="259" key="#SQL_Dialects" timestamp="1643162254865">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

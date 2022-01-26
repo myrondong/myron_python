@@ -70,16 +70,42 @@ def insert(request):
     return render(request, 'myadmin/info.html', context)
 
 
-def delete(request):
+def delete(request, uid=0):
     """执行信息删除"""
-    return render(request, 'myadmin/index/index.html')
+    try:
+        ob = User.objects.get(id=uid)
+        ob.status = 9
+        ob.update_at = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        ob.save()
+        context = {'info': '删除成功'}
+    except Exception as err:
+        context = {'info': '删除失败'}
+        print(err)
+    return render(request, 'myadmin/info.html', context)
 
 
-def edit(request):
+def edit(request, uid=0):
     """加载信息编辑表单"""
-    return render(request, 'myadmin/index/index.html')
+    try:
+        ob = User.objects.get(id=uid)
+        context = {'user': ob}
+        return render(request, 'myadmin/user/edit.html', context)
+    except Exception as err:
+        context = {'info': '没有找到要修改信息'}
+        print(err)
+        return render(request, 'myadmin/user/edit.html', context)
 
 
-def update(request):
+def update(request, uid):
     """执行信息修改"""
-    return render(request, 'myadmin/index/index.html')
+    try:
+        ob = User.objects.get(id=uid)
+        ob.nickname = request.POST['nickname']
+        ob.status = request.POST['status']
+        ob.update_at = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        ob.save()
+        context = {'info': '修改成功'}
+    except Exception as err:
+        context = {'info': '修改失败'}
+        print(err)
+    return render(request, 'myadmin/info.html', context)

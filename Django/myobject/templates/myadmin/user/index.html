@@ -63,14 +63,11 @@
                                     <td>{{ vo.create_at | date:'Y-m-d H:i:s' }}</td>
                                     <td>{{ vo.update_at | date:'Y-m-d H:i:s' }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-success btn-xs">
+                                        <a type="button" href="{% url 'myadmin_user_edit' vo.id %}" class="btn btn-success btn-xs">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 编辑
-                                        </button>
-                                        <button type="button" class="btn btn-danger btn-xs">
+                                        </a>
+                                        <button type="button" onclick="doDel('{% url 'myadmin_user_delete' vo.id %}')" class="btn btn-danger btn-xs">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 删除
-                                        </button>
-                                        <button type="button" class="btn btn-warning btn-xs">
-                                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查看订单
                                         </button>
                                     </td>
                                 </tr>
