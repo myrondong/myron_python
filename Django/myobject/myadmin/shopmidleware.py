@@ -15,16 +15,14 @@ class ShopMiddleware:
 
         # 判断管理后台是否登录
         # 定义后台不登录也可直接访问的url列表
-        ulist = ['/myadmin/login','/myadmin/logout','/myadmin/dologin']
+        ulist = ['/myadmin/login', '/myadmin/logout', '/myadmin/dologin']
         # 判断当前请求url地址是否是以/myadmin开头,并且不在urllist中，才做是否登录判断
         if re.match(r'^/myadmin', path) and path not in ulist:
             print(request.session)
             # 判断登录（key 名为adminuser是否存在session中）
             if 'adminuser' not in request.session:
-
                 return redirect(reverse("myadmin_login_index"))
                 # pass
-
 
         response = self.get_response(request)
         # Code to be executed for each request/response after
