@@ -1,11 +1,14 @@
 from django.shortcuts import render, HttpResponse
 from django_webssh.tools.tools import unique
 from webssh.settings import TMP_DIR
-
+from django_webssh.models import LoginData
 import os
 
 
 def index(request):
+    data = LoginData.objects
+    print(data)
+    print("aaaaaa")
     return render(request, 'index.html')
 
 

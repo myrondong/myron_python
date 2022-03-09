@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
     path('upload_ssh_key/', views.upload_ssh_key),
+
 ]
