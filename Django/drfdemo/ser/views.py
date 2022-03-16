@@ -46,7 +46,7 @@ class StudentView(View):
         # 模拟数据
         data = {
             "name": "xiaowang",
-            "age": 110,
+            "age": 10,
             "sex": True,
             "classmate": "2200",
             "description": '"12121d'
@@ -54,7 +54,7 @@ class StudentView(View):
         # 1.1 实例化对象，获取实例化对象
         sers = StudentSerializers(data=data)
         # 1.2 调用序列化器进行验证数据
-        ret =sers.is_valid() # 不抛出异常
+        ret = sers.is_valid()  # 不抛出异常
         # ret = sers.is_valid(raise_exception=True)  # 抛出异常
 
         print(ret)
@@ -70,14 +70,14 @@ class StudentView(View):
         # 3、返回结果
         return JsonResponse({})
 
-    def get(self, requests):
+    def get4(self, requests):
         """反序列化-采用字段选项验证数据[验证失败抛出异常]"""
         # 1、接受客户提交
         # data = json.dumps(requests.body)
         # 模拟数据
         data = {
             "name": "xiaowang",
-            "age": 110,
+            "age": 10,
             "sex": True,
             "classmate": "2200",
             "description": '"12121d'
@@ -94,3 +94,31 @@ class StudentView(View):
         # 2、操作数据库
         # 3、返回结果
         return JsonResponse({})
+
+    def get(self, requests):
+        """反序列化-验证完成以后，添加数据"""
+        # 1、接受客户提交
+        # data = json.dumps(requests.body)
+        # 模拟数据
+        data = {
+            "name": "xiaowang66",
+            "age": 10,
+            "sex": True,
+            "classmate": "2200",
+            "description": '"12121d'
+        }
+        # 1.1 实例化对象，获取实例化对象
+        sers = StudentSerializers(data=data)
+
+        # 1.2 调用序列化器进行验证数据
+        sers.is_valid(raise_exception=True)  # 抛出异常，代码不会执行下来
+
+        # 1.3 获取到验证的结果
+        # data = sers.validated_data
+        # print(data)
+        # 2、操作数据库
+        #instance = Student.objects.create(**sers.validated_data)
+        #serlizers = StudentSerializers(instance=instance)
+        sers.save()
+        # 3、返回结果
+        return JsonResponse(data=sers.data,status=200)
