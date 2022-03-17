@@ -11,6 +11,11 @@ ModelSerializer 模型序列化器，是序列化器的子类，除了serializer
 1、序列化会把模型对象转换成字典，经过response变成json
 2、反序列化把客户端发送过来数据，经过request变成字典，序列化器可以把字典转化成模型
 3、反序列化，完成数据校验功能
+
+模型序列化器 ModelSerializer:
+1、基于模型类自动生成一些列字段
+2、基于模型类自动Serializers和validators,比如unique_together -> 联合索引
+2、包含默认的create()和update()的实现
 """
 
 
@@ -84,13 +89,16 @@ class StudentSerializers(serializers.Serializer):
         :param validated_data:固定参数，，验证成功后的结果
         :return:更新数据后，就自动实现从字典变成模型对象的过程
         """
-        print(f"instance : {instance}")
-        instance.name = validated_data['name']
-        instance.age = validated_data['age']
-        instance.sex = validated_data['sex']
-        instance.classmate = validated_data['classmate']
-        instance.description = validated_data['description']
-        print(instance.classmate,instance.description)
+        # print(f"instance : {instance}")
+        # instance.name = validated_data['name']
+        # instance.age = validated_data['age']
+        # instance.sex = validated_data['sex']
+        # instance.classmate = validated_data['classmate']
+        # instance.description = validated_data['description']
+        # print(instance.classmate,instance.description)
+        for key, value in validated_data.items():
+            # setattr 设置对象属性作用
+            setattr(instance, key, value)
         instance.save()
         # 调用模型对象的save方法和视图serialzier.save()不是同一种方法
         return instance
@@ -128,3 +136,28 @@ class StudentSerializers1(serializers.Serializer):
     # def update(self, instance, validated_data):
     #   完成更新操作，更新数据以后，就自动从字典变成模型对象过程
     #    pass
+
+
+class StudentModelSerializer(serializers.ModelSerializer):
+    """学生模型序列化器"""
+
+    # 1、转换的字段说明
+    # 字段名 = 字段类型(选项=选项值)
+    nickname = serializers.CharField(read_only=True)
+    # 2、如果字段当前序列化器继承ModelSerializer，则需要声明调用的模型信息
+    # class Meta 必须两个属性model，fields
+    class Meta:
+        model = Student
+        # fields = "__all__"
+        fields = ['name','sex','age','classmate','nickname']
+    #    read_only_fields = [] # 选填，只读字段序列，表示设置这里字段只会在序列化阶段采用
+    #    fields = ['id','name'] # 还可以写成
+    #    extra_kwargs = {  #选填字段额外选项
+    #       "字段名"：{
+    #            "选项":"选项值"
+    #           }
+    #   }
+
+    # 3、验证代码对象方法
+
+    # 4、模型操作方法(create ,update)
