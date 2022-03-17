@@ -95,7 +95,7 @@ class StudentView(View):
         # 3、返回结果
         return JsonResponse({})
 
-    def get(self, requests):
+    def get5(self, requests):
         """反序列化-验证完成以后，添加数据"""
         # 1、接受客户提交
         # data = json.dumps(requests.body)
@@ -116,9 +116,43 @@ class StudentView(View):
         # 1.3 获取到验证的结果
         # data = sers.validated_data
         # print(data)
+
         # 2、操作数据库
-        #instance = Student.objects.create(**sers.validated_data)
-        #serlizers = StudentSerializers(instance=instance)
+        # instance = Student.objects.create(**sers.validated_data)
+        # serlizers = StudentSerializers(instance=instance)
         sers.save()
+        # 会根据实例化序列化器时候，是否传入instance属性来自动调用create或者update方法，传入instance属性
+        # 自动调用update方法；没有传入instance属性会自动调用create
+
         # 3、返回结果
-        return JsonResponse(data=sers.data,status=200)
+        return JsonResponse(data=sers.data, status=200)
+
+    def get(self, requests):
+        """反序列化-验证完成以后，更新数据"""
+        # 1、根据客户端访问的url地址，获取pk值
+        # ser/students/2/ path("students/?P<pk>\d+",views.StudentView.as_view())
+        pk = 1
+        try:
+            student = Student.objects.get(pk=pk)
+            print(f"student object:{student}")
+        except Exception as e:
+            return JsonResponse({"error": "当前学生不存在"}, status=404)
+        # 2、接受客户提交
+        # 模拟数据
+        data = {
+            "name": "11xiaowang66",
+            "age": 20,
+            "sex": True,
+            "classmate": "2200",
+            "description": '"hello_word',
+        }
+        # 3、修改操作中的实例化序列化对象
+        serial = StudentSerializers(instance=student, data=data)
+
+        # 4.验证数据
+        serial.is_valid(raise_exception=True)
+        # 5.入库
+        # request.user 是django 中记录登录用户的模型数据
+        serial.save() # 在save中，传递一些不需要验证的数据到模型里面
+        # 6。返回结果
+        return JsonResponse(data=serial.data, status=200)

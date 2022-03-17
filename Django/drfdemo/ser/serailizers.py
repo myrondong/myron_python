@@ -6,6 +6,11 @@ serializers 是drf 提供给开发者调用序列化模块
 面声明所有可以序列化器的基类，其中
 serializer 序列化基类，drf 所有序列化器都必须继承 serializer
 ModelSerializer 模型序列化器，是序列化器的子类，除了serializer，最常用序列化器
+
+序列化器作用 Serializers：
+1、序列化会把模型对象转换成字典，经过response变成json
+2、反序列化把客户端发送过来数据，经过request变成字典，序列化器可以把字典转化成模型
+3、反序列化，完成数据校验功能
 """
 
 
@@ -60,13 +65,35 @@ class StudentSerializers(serializers.Serializer):
 
     # 4、模型操作方法(create ,update)
     def create(self, validated_data):
-        #完成添加操作，添加数据以后，就自动从字典变成模型对象过程
+        """
+        完成添加操作，添加数据以后，就自动从字典变成模型对象过程
+        方法固定create,参数固定validated_data就是验证成功后的结果，
+        就是自动从字典对象变成模型对象的一个过程
+        :param validated_data:
+        :return:
+        """
         instance = Student.objects.create(**validated_data)
         # serlizers = StudentSerializers(instance=instance)
         return instance
-    # def update(self, instance, validated_data):
-    #   完成更新操作，更新数据以后，就自动从字典变成模型对象过程
-    #    pass
+
+    def update(self, instance, validated_data):
+        """
+        完成更新操作，更新数据以后，就自动从字典变成模型对象过程
+        方法固定名称 update
+        :param instance:固定参数，实例化序列化对象时，必须传入模型对象
+        :param validated_data:固定参数，，验证成功后的结果
+        :return:更新数据后，就自动实现从字典变成模型对象的过程
+        """
+        print(f"instance : {instance}")
+        instance.name = validated_data['name']
+        instance.age = validated_data['age']
+        instance.sex = validated_data['sex']
+        instance.classmate = validated_data['classmate']
+        instance.description = validated_data['description']
+        print(instance.classmate,instance.description)
+        instance.save()
+        # 调用模型对象的save方法和视图serialzier.save()不是同一种方法
+        return instance
 
 
 class StudentSerializers1(serializers.Serializer):
