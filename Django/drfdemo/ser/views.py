@@ -161,7 +161,7 @@ class StudentView(View):
 
 class StudentModelView(View):
     """模型序列化器"""
-    def get(self, requests):
+    def get1(self, requests):
         """序列化器-序列化调用-序列化一个模型调用"""
         # 0、获取数据集
         students = Student.objects.first()
@@ -183,7 +183,7 @@ class StudentModelView(View):
         # 1、实例化序列化器，得到序列化对象
         # 如何序列化多个[务必使用many=True]
 
-        sers = StudentSerializers(instance=stu_list, many=True)
+        sers = StudentModelSerializer(instance=stu_list, many=True)
         # 2、调用实列化对象的data属性方法获取转换后数据
 
         datas = sers.data
@@ -192,20 +192,20 @@ class StudentModelView(View):
 
         return JsonResponse(data=datas, status=200, safe=False, json_dumps_params={"ensure_ascii": False})
 
-    def get3(self, requests):
+    def get(self, requests):
         """反序列化-采用字段选项验证数据[验证失败抛出异常，工作中最常用]"""
         # 1、接受客户提交
         # data = json.dumps(requests.body)
         # 模拟数据
         data = {
-            "name": "xiaowang",
+            "name": "11xiaowang",
             "age": 10,
             "sex": True,
             "classmate": "2200",
             "description": '"12121d'
         }
         # 1.1 实例化对象，获取实例化对象
-        sers = StudentSerializers(data=data)
+        sers = StudentModelSerializer(data=data)
         # 1.2 调用序列化器进行验证数据
         ret = sers.is_valid()  # 不抛出异常
         # ret = sers.is_valid(raise_exception=True)  # 抛出异常

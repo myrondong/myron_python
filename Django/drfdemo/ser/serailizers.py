@@ -144,20 +144,22 @@ class StudentModelSerializer(serializers.ModelSerializer):
     # 1、转换的字段说明
     # 字段名 = 字段类型(选项=选项值)
     nickname = serializers.CharField(read_only=True)
+
     # 2、如果字段当前序列化器继承ModelSerializer，则需要声明调用的模型信息
     # class Meta 必须两个属性model，fields
     class Meta:
         model = Student
         # fields = "__all__"
-        fields = ['name','sex','age','classmate','nickname']
-    #    read_only_fields = [] # 选填，只读字段序列，表示设置这里字段只会在序列化阶段采用
-    #    fields = ['id','name'] # 还可以写成
-    #    extra_kwargs = {  #选填字段额外选项
-    #       "字段名"：{
-    #            "选项":"选项值"
-    #           }
-    #   }
+        fields = ['name', 'sex', 'age', 'classmate', 'nickname']
+        #    read_only_fields = [] # 选填，只读字段序列，表示设置这里字段只会在序列化阶段采用
+        #    fields = ['id','name'] # 还可以写成
+        extra_kwargs = {  # 选填字段额外选项
+            "age":{
+            "max_value": "50"
+            }
+        }
 
     # 3、验证代码对象方法
-
+    def validate(self, attrs):
+        pass
     # 4、模型操作方法(create ,update)
