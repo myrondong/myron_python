@@ -155,7 +155,14 @@ class StudentModelSerializer(serializers.ModelSerializer):
         #    fields = ['id','name'] # 还可以写成
         extra_kwargs = {  # 选填字段额外选项
             "age":{
-            "max_value": "50"
+                "max_value": 50,
+                "min_value":0
+            },
+            "error_message":{
+                "age":{
+                    "min_value":"最小值大于等于0",
+                    "max_value":"最大值小于50"
+                }
             }
         }
 

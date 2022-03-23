@@ -294,7 +294,7 @@ class StudentModelView(View):
         # 模拟数据
         data = {
             "name": "11xiaowang66",
-            "age": 20,
+            "age": 120,
             "sex": True,
             "classmate": "2200",
         }
