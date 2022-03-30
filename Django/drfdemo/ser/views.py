@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.views import View
 from django.http import JsonResponse
 from stuapi.models import Student
-from ser.serailizers import StudentSerializers, StudentModelSerializer # Alt+Enter自动导包
+from ser.serailizers import StudentSerializers, StudentModelSerializer  # Alt+Enter自动导包
 import json
+
 
 # Create your views here.
 
@@ -147,25 +148,26 @@ class StudentView(View):
         }
         # 3、修改操作中的实例化序列化对象
         # serial = StudentSerializers(instance=student, data=data)
-        serial = StudentSerializers(instance=student, data=data,partial=True)
+        serial = StudentSerializers(instance=student, data=data, partial=True)
         # partial=True 这个表示需要修改部分data数据
 
         # 4.验证数据
         serial.is_valid(raise_exception=True)
         # 5.入库
         # request.user 是django 中记录登录用户的模型数据
-        serial.save() # 在save中，传递一些不需要验证的数据到模型里面
+        serial.save()  # 在save中，传递一些不需要验证的数据到模型里面
         # 6。返回结果
         return JsonResponse(data=serial.data, status=200)
 
 
 class StudentModelView(View):
     """模型序列化器"""
+
     def get1(self, requests):
         """序列化器-序列化调用-序列化一个模型调用"""
         # 0、获取数据集
         students = Student.objects.first()
-        students.nickname ='小学生'
+        students.nickname = '小学生'
         # 1、实例化序列化器，得到序列化对象
         sers = StudentModelSerializer(instance=students)
 
@@ -175,7 +177,7 @@ class StudentModelView(View):
 
         return JsonResponse(data=datas, status=200, safe=False, json_dumps_params={"ensure_ascii": False})
 
-    def get2(self, requests):
+    def get(self, requests):
         """序列化器使用-调用阶段 序列化多个模型对象"""
         # 0、获取数据集
         stu_list = Student.objects.all()
@@ -192,7 +194,7 @@ class StudentModelView(View):
 
         return JsonResponse(data=datas, status=200, safe=False, json_dumps_params={"ensure_ascii": False})
 
-    def get(self, requests):
+    def get12(self, requests):
         """反序列化-采用字段选项验证数据[验证失败抛出异常，工作中最常用]"""
         # 1、接受客户提交
         # data = json.dumps(requests.body)
@@ -300,13 +302,13 @@ class StudentModelView(View):
         }
         # 3、修改操作中的实例化序列化对象
         # serial = StudentSerializers(instance=student, data=data)
-        serial = StudentSerializers(instance=student, data=data,partial=True)
+        serial = StudentSerializers(instance=student, data=data, partial=True)
         # partial=True 这个表示需要修改部分data数据
 
         # 4.验证数据
         serial.is_valid(raise_exception=True)
         # 5.入库
         # request.user 是django 中记录登录用户的模型数据
-        serial.save() # 在save中，传递一些不需要验证的数据到模型里面
+        serial.save()  # 在save中，传递一些不需要验证的数据到模型里面
         # 6。返回结果
         return JsonResponse(data=serial.data, status=200)
