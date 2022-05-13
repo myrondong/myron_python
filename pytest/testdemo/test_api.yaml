@@ -1,0 +1,26 @@
+-
+ name: "获得token鉴权码接口"
+ request:
+  url: https://api.weixin.qq.com/cgi-bin/token
+  method: get
+  headers:
+    Content-Type: application/json
+  params:
+   grant_type: client_credential
+   appid: waxawdasdadadd
+ validate:
+  - eq: {errcode: 40013}
+# 第二个用例
+-
+ name: "获得token鉴权码接口"
+ request:
+  url: https://api.weixin.qq.com/cgi-bin/token
+  method: get
+  headers:
+    Content-Type: application/json
+  params:
+   grant_type: client_credential
+   appid: waxawdasdadadd
+ validate:
+  - eq: {errcode: 40013}
+
