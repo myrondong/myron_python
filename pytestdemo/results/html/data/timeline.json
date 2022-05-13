@@ -1,0 +1,30 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "MFG-LANG1-MIRACL",
+    "children" : [ {
+      "name" : "50668-MainThread",
+      "children" : [ {
+        "name" : "test_comment",
+        "uid" : "9e0df6e8f930dd50",
+        "parentUid" : "ddc0b6bf88f2a76f7ef45dee21cdc054",
+        "status" : "passed",
+        "time" : {
+          "start" : 1652431525487,
+          "stop" : 1652431525487,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "ddc0b6bf88f2a76f7ef45dee21cdc054"
+    } ],
+    "uid" : "966f461733ad4705507c8f820c90b167"
+  } ]
+}

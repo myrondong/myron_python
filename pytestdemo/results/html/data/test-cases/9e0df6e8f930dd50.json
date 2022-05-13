@@ -1,0 +1,60 @@
+{
+  "uid" : "9e0df6e8f930dd50",
+  "name" : "test_comment",
+  "fullName" : "TestDemo.test_demo.Test_D#test_comment",
+  "historyId" : "84c02158cb90091dd40c0b8af0040c42",
+  "time" : {
+    "start" : 1652431525487,
+    "stop" : 1652431525487,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "newBroken" : false,
+  "newPassed" : false,
+  "retriesCount" : 0,
+  "retriesStatusChange" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "TestDemo"
+  }, {
+    "name" : "suite",
+    "value" : "test_demo"
+  }, {
+    "name" : "subSuite",
+    "value" : "Test_D"
+  }, {
+    "name" : "host",
+    "value" : "MFG-LANG1-MIRACL"
+  }, {
+    "name" : "thread",
+    "value" : "50668-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "TestDemo.test_demo"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "9e0df6e8f930dd50.json",
+  "parameterValues" : [ ]
+}

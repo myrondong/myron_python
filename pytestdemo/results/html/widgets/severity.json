@@ -1,0 +1,11 @@
+[ {
+  "uid" : "9e0df6e8f930dd50",
+  "name" : "test_comment",
+  "time" : {
+    "start" : 1652431525487,
+    "stop" : 1652431525487,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]
