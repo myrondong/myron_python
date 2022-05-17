@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 class TestMiShop():
 
     def setup_class(self):
-        self.driver = webdriver.Edge(r'F:\git_reposittory\myron_python\autoUI\msedgedriver.exe')
+        self.driver = webdriver.Edge(r'D:\GitData\myron_python\autoUI\msedgedriver.exe')
         self.driver.implicitly_wait(6)
 
     def test_open_index(self):
@@ -19,7 +19,11 @@ class TestMiShop():
         xiaomi_menu = self.driver.find_element(By.XPATH,'//*[@id="app"]/div[1]/div/div[3]/div[1]/div[2]/ul/li[2]/a/span')
         self.ac.move_to_element(xiaomi_menu).perform()
 
-
+    def test_get_product_information(self):
+        # self.driver.find_element(By.XPATH,"/html/body/div[1]/div[1]/div/div[3]/div[2]/div/ul/li[1]/a/div[2]").click()
+        product_list = self.driver.find_elements(By.CSS_SELECTOR,'#J_navMenu .title')
+        for son_list in product_list:
+            son_list.click()
     def teardown_class(self):
         # self.driver.close()
         pass
