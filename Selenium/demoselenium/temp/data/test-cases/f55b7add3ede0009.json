@@ -1,0 +1,58 @@
+{
+  "uid" : "f55b7add3ede0009",
+  "name" : "test_search_in_baidu_com",
+  "fullName" : "test_edg.test_edg.TestPythonOrgSearch#test_search_in_baidu_com",
+  "historyId" : "a64b18ee008e0f280b185eaf10a66041",
+  "time" : {
+    "start" : 1652765885173,
+    "stop" : 1652765886299,
+    "duration" : 1126
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "newBroken" : false,
+  "newPassed" : false,
+  "retriesCount" : 0,
+  "retriesStatusChange" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test_edg"
+  }, {
+    "name" : "suite",
+    "value" : "test_edg"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestPythonOrgSearch"
+  }, {
+    "name" : "host",
+    "value" : "MFG-LANG1-MIRACL"
+  }, {
+    "name" : "thread",
+    "value" : "23388-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_edg.test_edg"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "f55b7add3ede0009.json",
+  "parameterValues" : [ ]
+}

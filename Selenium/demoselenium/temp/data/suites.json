@@ -1,0 +1,51 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "test_edg",
+    "children" : [ {
+      "name" : "test_edg",
+      "children" : [ {
+        "name" : "TestPythonOrgSearch",
+        "children" : [ {
+          "name" : "test_search_in_python_org",
+          "uid" : "4d8df0e15155446e",
+          "parentUid" : "5fc9863694ae8f24303d644009b8ca32",
+          "status" : "passed",
+          "time" : {
+            "start" : 1652766073996,
+            "stop" : 1652766188976,
+            "duration" : 114980
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "newPassed" : false,
+          "newBroken" : false,
+          "retriesCount" : 0,
+          "retriesStatusChange" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "test_search_in_baidu_com",
+          "uid" : "a91cf5f84caa04d8",
+          "parentUid" : "5fc9863694ae8f24303d644009b8ca32",
+          "status" : "passed",
+          "time" : {
+            "start" : 1652770650187,
+            "stop" : 1652770651990,
+            "duration" : 1803
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "newPassed" : false,
+          "newBroken" : false,
+          "retriesCount" : 2,
+          "retriesStatusChange" : false,
+          "parameters" : [ ]
+        } ],
+        "uid" : "5fc9863694ae8f24303d644009b8ca32"
+      } ],
+      "uid" : "f053c267524efbba530e6b80c07721fc"
+    } ],
+    "uid" : "2cd65f779883a40aed603784f4a5a93e"
+  } ]
+}
