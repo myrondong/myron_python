@@ -1,3 +1,4 @@
+from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 from stuapi.models import Student
 
@@ -137,7 +138,7 @@ class StudentSerializers1(serializers.Serializer):
     #   完成更新操作，更新数据以后，就自动从字典变成模型对象过程
     #    pass
 
-
+# 一把全部从数据库提取数据用ModelSerializer 简单
 class StudentModelSerializer(serializers.ModelSerializer):
     """学生模型序列化器"""
 
@@ -149,25 +150,28 @@ class StudentModelSerializer(serializers.ModelSerializer):
     # class Meta 必须两个属性model，fields
     class Meta:
         model = Student
-        # fields = "__all__"
-        fields = ['name', 'sex', 'age', 'classmate', 'description','nickname']
+        fields = "__all__"
+        #fields = ['name', 'sex', 'age', 'classmate', 'description','nickname']
         #    read_only_fields = [] # 选填，只读字段序列，表示设置这里字段只会在序列化阶段采用
         #    fields = ['id','name'] # 还可以写成
-        # extra_kwargs = {  # 选填字段额外选项
-        #     "age": {
-        #         "min_value": 0,
-        #         "max_value": 50
-        #
-        #     },
-        #     "error_messages": {
-        #         "age": {
-        #             "min_value": "最小值大于等于0",
-        #             "max_value": "最大值小于50"
-        #         }
-        #     }
-        # }
+        extra_kwargs = {  # 选填字段额外选项
+            "age": {
+                "min_value": 0,
+                "max_value": 20,
+                "error_messages": {
+                    "age": {
+                        "min_value": "aa",
+                        "max_value": "bb"
+                    }
+            },
+            }
+        }
 
     # 3、验证代码对象方法
-    def validate(self, attrs):
-        pass
+    # def create(self, validate_data):
+    #     # 密码加密
+    #     validate_data['password'] = make_password(validate_data['password'])
+    #
+    #     pass
+
     # 4、模型操作方法(create ,update)

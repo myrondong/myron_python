@@ -128,7 +128,7 @@ class StudentView(View):
         # 3、返回结果
         return JsonResponse(data=sers.data, status=200)
 
-    def get(self, requests):
+    def get6(self, requests):
         """反序列化-验证完成以后，更新数据"""
         # 1、根据客户端访问的url地址，获取pk值
         # ser/students/2/ path("students/?P<pk>\d+",views.StudentView.as_view())
@@ -177,7 +177,7 @@ class StudentModelView(View):
 
         return JsonResponse(data=datas, status=200, safe=False, json_dumps_params={"ensure_ascii": False})
 
-    def get(self, requests):
+    def get2(self, requests):
         """序列化器使用-调用阶段 序列化多个模型对象"""
         # 0、获取数据集
         stu_list = Student.objects.all()
@@ -194,7 +194,7 @@ class StudentModelView(View):
 
         return JsonResponse(data=datas, status=200, safe=False, json_dumps_params={"ensure_ascii": False})
 
-    def get12(self, requests):
+    def get3(self, requests):
         """反序列化-采用字段选项验证数据[验证失败抛出异常，工作中最常用]"""
         # 1、接受客户提交
         # data = json.dumps(requests.body)
@@ -209,9 +209,9 @@ class StudentModelView(View):
         # 1.1 实例化对象，获取实例化对象
         sers = StudentModelSerializer(data=data)
         # 1.2 调用序列化器进行验证数据
-        ret = sers.is_valid()  # 不抛出异常
-        # ret = sers.is_valid(raise_exception=True)  # 抛出异常
-
+        # ret = sers.is_valid()  # 不抛出异常
+        sers.is_valid(raise_exception=True)  # 抛出异常
+        ret = True
         print(ret)
         if ret:
             a = sers.validated_data
@@ -223,7 +223,7 @@ class StudentModelView(View):
         # 1.3 获取到验证的结果
         # 2、操作数据库
         # 3、返回结果
-        return JsonResponse({})
+        return JsonResponse(dict(sers.data))
 
     def get4(self, requests):
         """反序列化-采用字段选项验证数据[验证失败抛出异常]"""
@@ -240,8 +240,8 @@ class StudentModelView(View):
         # 1.1 实例化对象，获取实例化对象
         sers = StudentSerializers(data=data)
         # 1.2 调用序列化器进行验证数据
-        # ret =sers.is_valid() # 不抛出异常
-        sers.is_valid(raise_exception=True)  # 抛出异常，代码不会执行下来
+        ret =sers.is_valid() # 不抛出异常
+        # sers.is_valid(raise_exception=True)  # 抛出异常，代码不会执行下来
 
         return JsonResponse(dict(sers.validated_data))
 
@@ -256,14 +256,14 @@ class StudentModelView(View):
         # data = json.dumps(requests.body)
         # 模拟数据
         data = {
-            "name": "xiaowang66",
+            "name": "11xiaowang66",
             "age": 10,
             "sex": True,
             "classmate": "2200",
             "description": '"12121d'
         }
         # 1.1 实例化对象，获取实例化对象
-        sers = StudentSerializers(data=data)
+        sers = StudentModelSerializer(data=data)
 
         # 1.2 调用序列化器进行验证数据
         sers.is_valid(raise_exception=True)  # 抛出异常，代码不会执行下来
@@ -282,7 +282,7 @@ class StudentModelView(View):
         # 3、返回结果
         return JsonResponse(data=sers.data, status=200)
 
-    def get6(self, requests):
+    def get(self, requests):
         """反序列化-验证完成以后，更新数据"""
         # 1、根据客户端访问的url地址，获取pk值
         # ser/students/2/ path("students/?P<pk>\d+",views.StudentView.as_view())
@@ -295,14 +295,14 @@ class StudentModelView(View):
         # 2、接受客户提交
         # 模拟数据
         data = {
-            "name": "11xiaowang66",
-            "age": 120,
+            "name": "555xiaowang66",
+            "age": 10,
             "sex": True,
             "classmate": "2200",
         }
         # 3、修改操作中的实例化序列化对象
         # serial = StudentSerializers(instance=student, data=data)
-        serial = StudentSerializers(instance=student, data=data, partial=True)
+        serial = StudentModelSerializer(instance=student, data=data, partial=True)
         # partial=True 这个表示需要修改部分data数据
 
         # 4.验证数据
@@ -312,3 +312,6 @@ class StudentModelView(View):
         serial.save()  # 在save中，传递一些不需要验证的数据到模型里面
         # 6。返回结果
         return JsonResponse(data=serial.data, status=200)
+
+
+
