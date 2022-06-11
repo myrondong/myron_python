@@ -1,1 +1,81 @@
-[ ]
+[ {
+  "uid" : "b48f397bc68ac70a",
+  "name" : "test_api_ali[args1]",
+  "time" : {
+    "start" : 1652427315672,
+    "stop" : 1652427316075,
+    "duration" : 403
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "37044e3e98a3eef7",
+  "name" : "test_api_ali[args0]",
+  "time" : {
+    "start" : 1652427315331,
+    "stop" : 1652427315653,
+    "duration" : 322
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "8949302a150362c3",
+  "name" : "test_02_alang[小刘-56]",
+  "time" : {
+    "start" : 1652427315310,
+    "stop" : 1652427315310,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "bb6f103dbbe8ab96",
+  "name" : "test_01_alang[小王]",
+  "time" : {
+    "start" : 1652427315277,
+    "stop" : 1652427315277,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4a32cfaf1b03d583",
+  "name" : "test_02_alang[小李-56]",
+  "time" : {
+    "start" : 1652427315320,
+    "stop" : 1652427315321,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "7923b77fb6d54b6a",
+  "name" : "test_01_alang[小刘]",
+  "time" : {
+    "start" : 1652427315285,
+    "stop" : 1652427315285,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b1dc38918c613794",
+  "name" : "test_02_alang[小王-35]",
+  "time" : {
+    "start" : 1652427315300,
+    "stop" : 1652427315300,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "95f4411873fda65",
+  "name" : "test_01_alang[小李]",
+  "time" : {
+    "start" : 1652427315292,
+    "stop" : 1652427315292,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

@@ -1,0 +1,60 @@
+{
+  "uid" : "b48f397bc68ac70a",
+  "name" : "test_api_ali[args1]",
+  "fullName" : "test_api.TestApi#test_api_ali",
+  "historyId" : "f8d15cabb5aa9ffcc1e70803d52cd333",
+  "time" : {
+    "start" : 1652427315672,
+    "stop" : 1652427316075,
+    "duration" : 403
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "newBroken" : false,
+  "newPassed" : false,
+  "retriesCount" : 0,
+  "retriesStatusChange" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "test_api"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestApi"
+  }, {
+    "name" : "host",
+    "value" : "MFG-LANG1-MIRACL"
+  }, {
+    "name" : "thread",
+    "value" : "45908-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_api"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "args",
+    "value" : "{'name': '获得token鉴权码接口', 'request': {'url': 'https://api.weixin.qq.com/cgi-bin/token', 'method': 'get', 'headers': {'Content-Type': 'application/json'}, 'params': {'grant_type': 'client_credential', 'appid': 'waxawdasdadadd'}}, 'validate': [{'eq': {'errcode': 40013}}]}"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "b48f397bc68ac70a.json",
+  "parameterValues" : [ "{'name': '获得token鉴权码接口', 'request': {'url': 'https://api.weixin.qq.com/cgi-bin/token', 'method': 'get', 'headers': {'Content-Type': 'application/json'}, 'params': {'grant_type': 'client_credential', 'appid': 'waxawdasdadadd'}}, 'validate': [{'eq': {'errcode': 40013}}]}" ]
+}

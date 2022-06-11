@@ -1,0 +1,12 @@
+{
+	"com": {"port": "COM6","bps":"9600"},
+	"test":
+	{
+		"LED_Name":{
+			"Red":{"low":100, "high":100},
+			"Green":{"low":100, "high":100},
+			"Blue":{"low":100, "high":100},
+			"White":{"low":100, "high":100}
+		}
+	}
+}

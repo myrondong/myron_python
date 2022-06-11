@@ -1,0 +1,63 @@
+{
+  "uid" : "b1dc38918c613794",
+  "name" : "test_02_alang[小王-35]",
+  "fullName" : "test_api.TestApi#test_02_alang",
+  "historyId" : "407a7ca8afdf4032bfef8d774a5a83f6",
+  "time" : {
+    "start" : 1652427315300,
+    "stop" : 1652427315300,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "newBroken" : false,
+  "newPassed" : false,
+  "retriesCount" : 0,
+  "retriesStatusChange" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "test_api"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestApi"
+  }, {
+    "name" : "host",
+    "value" : "MFG-LANG1-MIRACL"
+  }, {
+    "name" : "thread",
+    "value" : "45908-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_api"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "age",
+    "value" : "35"
+  }, {
+    "name" : "name",
+    "value" : "'小王'"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "b1dc38918c613794.json",
+  "parameterValues" : [ "35", "'小王'" ]
+}
