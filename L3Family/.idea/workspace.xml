@@ -20,6 +20,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2AHQxxUacuacR09KUcKQHEwSkR9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -67,6 +70,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -80,6 +84,10 @@
       <workItem from="1654664291727" duration="9095000" />
       <workItem from="1654686991688" duration="1206000" />
       <workItem from="1654691390221" duration="292000" />
+      <workItem from="1655182951062" duration="3360000" />
+      <workItem from="1655186375501" duration="8721000" />
+      <workItem from="1655275516240" duration="1936000" />
+      <workItem from="1655282555382" duration="10000" />
     </task>
     <servers />
   </component>
@@ -95,9 +103,9 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="212" height="477" key="HiddenNamespacesPopup/0.0.1536.834@0.0.1536.834" timestamp="1654676566635" />
-    <state x="499" y="222" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1654676610635">
+    <state x="499" y="222" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1655187668136">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="499" y="222" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/0.0.1536.834@0.0.1536.834" timestamp="1654676610635" />
+    <state x="499" y="222" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/0.0.1536.834@0.0.1536.834" timestamp="1655187668136" />
   </component>
 </project>

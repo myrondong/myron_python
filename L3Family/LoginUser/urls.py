@@ -1,13 +1,9 @@
-from django.conf.urls import url, include
-from django.contrib import admin
-from .views import *
-from rest_framework.documentation import include_docs_urls
-from rest_framework.routers import DefaultRouter
+from django.urls import re_path, path
+from . import views
 
-router = DefaultRouter()
-router.register('reg', RegList, 'reg')
-router.register('log', LogList, 'log')
 urlpatterns = [
-    url(r'', include(router.urls)),
-    url(r'^api/', include_docs_urls()),
+    path('users/', views.UsersAPIView.as_view()),
+    re_path('users/(?P<pk>\d+)/', views.UserAPIView.as_view(), name='user-detail'),
+    re_path('users/action=(?P<action>[a-z]+)/',views.UsersAPIView.as_view())
+
 ]

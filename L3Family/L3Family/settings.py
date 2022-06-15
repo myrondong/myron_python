@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-
+from django.core.cache import cache, caches
+# http://t.zoukankan.com/Vera-y-p-12102330.html
+# https://blog.csdn.net/a__int__/article/details/104124471
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -57,6 +59,17 @@ ROOT_URLCONF = 'L3Family.urls'
 REST_FRAMEWORK = {
     # 异常返回格式控制
     'EXCEPTION_HANDLER': 'utils.exception.custom_exception_handler',
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        },
+        'TIMEOUT': 60 * 60 * 2
+    }
 }
 
 
@@ -127,7 +140,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-AUTH_USER_MODEL = 'LoginUser.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
