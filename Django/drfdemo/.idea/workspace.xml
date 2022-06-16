@@ -36,7 +36,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="SQL Updates" />
     <property name="database.data.extractors.current.id" value="SQL Updates" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/demo" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -44,6 +44,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\git_reposittory\myron_python\Django\drfdemo\demo" />
       <recent name="F:\git_reposittory\myron_python\Django\drfdemo" />
       <recent name="F:\git_reposittory\myron_python\Djangos\drfdemo\ser" />
     </key>
@@ -198,7 +199,9 @@
       <workItem from="1653872929186" duration="8494000" />
       <workItem from="1655277468153" duration="514000" />
       <workItem from="1655282608402" duration="2627000" />
-      <workItem from="1655295170681" duration="313000" />
+      <workItem from="1655295170681" duration="1741000" />
+      <workItem from="1655344673125" duration="6311000" />
+      <workItem from="1655373362751" duration="1422000" />
     </task>
     <servers />
   </component>
