@@ -1,0 +1,7 @@
+Django==3.2.4
+django-commands==0.7
+django-filter==21.1
+django-redis==5.2.0
+djangorestframework==3.13.0
+djangorestframework-jwt==1.11.0
+
