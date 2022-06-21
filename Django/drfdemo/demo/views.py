@@ -375,10 +375,29 @@ class StudentReadOnlyModelViewSet(ReadOnlyModelViewSet, CreateModelMixin, Update
 
 
 from rest_framework.viewsets import ModelViewSet
-
+from rest_framework.decorators import action
 
 # 最简便版本了
 class StudentModelViewSet(ModelViewSet): # 万能视图 最常用的这个类
     queryset = Student.objects.all()
     # 假如想修改里面数据那就写get 方法，就是继承父类的一些信息
     serializer_class = StudentModelSerializers
+    # action 参数将ViewSet方法标记为可路由操作。
+    # methods:此操作响应的HTTP方法名称的列表。默认为“get”。
+    # detail:必需。确定此操作是否适用于实例/细节请求或集合/列表请求。
+    # url_path:定义此操作的url段。默认为装饰的方法的名称。
+    # url_name:定义此操作的内部（reverse）url名称。默认为用下划线修饰的方法的名称替换为破折号。
+    @action(methods=['get'], detail=False)
+    def login(self, request):
+        return Response({"msg": "OK"})
+
+    @action(methods=['get'],detail=False)
+
+    def login_log(self,request):
+        print(self.action)
+        # 视图集类比普通视图类多几个属性
+        # 通过self.method 获取http请求
+        # 通过self.action 获取本次客户端请求视图方法名(ViewSet提供)
+
+        return Response({"msg":"OK"})
+
