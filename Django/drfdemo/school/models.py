@@ -1,4 +1,3 @@
-from django.db import models
 from datetime import datetime
 from django.db import models
 
@@ -20,6 +19,21 @@ class Student(models.Model):
     def __str__(self):
         return self.name
 
+    #属性方法
+    @property
+    def Achievement(self):
+        """成绩列表"""
+        # print(self.s_achievement.all())
+        return self.s_achievement.all().values('student__name','course__name','score')
+
+    @property
+    def Achievements(self):
+        """成绩列表"""
+        queryset = self.s_achievement.all().values()
+
+
+        # print(self.s_achievement.all())
+        return self.s_achievement.all().values()
 
 class Course(models.Model):
     name = models.CharField(max_length=10, verbose_name="课程名称")
@@ -30,6 +44,7 @@ class Course(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Teacher(models.Model):
     name = models.CharField(max_length=10, verbose_name="姓名")
@@ -43,9 +58,9 @@ class Teacher(models.Model):
 
 
 class Achievement(models.Model):
-    score = models.DecimalField(default=0,max_digits=4,decimal_places=1,verbose_name="成绩")
-    student = models.ForeignKey(Student,on_delete=models.DO_NOTHING,related_name='s_achievement',db_constraint=False)
-    course = models.ForeignKey(Course,on_delete=models.DO_NOTHING,related_name='c_achievement',db_constraint=False)
+    score = models.DecimalField(default=0, max_digits=4, decimal_places=1, verbose_name="成绩")
+    student = models.ForeignKey(Student, on_delete=models.DO_NOTHING, related_name='s_achievement', db_constraint=False)
+    course = models.ForeignKey(Course, on_delete=models.DO_NOTHING, related_name='c_achievement', db_constraint=False)
     create_time = models.DateTimeField(auto_created=datetime.now)
 
     class Meta:

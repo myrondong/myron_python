@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+# http://www.iamnancy.top/djangorestframework/Home/ rdf 文档地址
+
 import os
 from pathlib import Path
 
@@ -42,7 +44,10 @@ INSTALLED_APPS = [
     'reqs',  # drf 提供请求响应
     'demo',  # drf提供请求和响应
     'school',  # 序列化器嵌套
+    'homework', # 作业练习
+    'opt', # drf 提供组件使用
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -127,3 +132,19 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+"""
+全局配置
+drf配置信息必须全部写在REST_FRAMEWORK配置项中
+"""
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'drfdemo.authentication.CustomerAuthentication',  # 自定义认证
+        'rest_framework.authentication.SessionAuthentication',  # session认证
+        'rest_framework.authentication.BasicAuthentication',    # 基本认证
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ],
+}

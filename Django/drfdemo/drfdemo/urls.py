@@ -23,5 +23,7 @@ urlpatterns = [
     path('ser/', include('ser.urls')),
     path('reqs/',include('reqs.urls')),
     path('demo/',include('demo.urls')),
-    path('school/',include('school.urls'))
+    path('school/',include('school.urls')),
+    path('homework/',include('homework.urls')),
+    path('opt/',include('opt.urls'))
 ]

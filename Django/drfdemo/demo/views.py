@@ -392,7 +392,6 @@ class StudentModelViewSet(ModelViewSet): # 万能视图 最常用的这个类
         return Response({"msg": "OK"})
 
     @action(methods=['get'],detail=False)
-
     def login_log(self,request):
         print(self.action)
         # 视图集类比普通视图类多几个属性
