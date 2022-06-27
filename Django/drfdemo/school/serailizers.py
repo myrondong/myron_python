@@ -70,6 +70,6 @@ class StudentModelSerializer(ModelSerializer):
 
     class Meta:
         model = Student
-        # fields = "__all__"
+        fields = "__all__"
         # fields = ['id', 'name', 'sex', 's_achievement', ]
-        fields = ['id', 'name', 'sex', 'Achievement', ]
+        # fields = ['id', 'name', 'sex', 'Achievement', ]

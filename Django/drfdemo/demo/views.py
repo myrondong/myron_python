@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.views import APIView
 from stuapi.models import Student
-from demo.serailizers import StudentModelSerializers
+from demo.serailizers import StudentModelSerializers1
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
 
@@ -24,7 +24,7 @@ class StudentApiView(APIView):
         # 1 获取学生列表信息
         student_list = Student.objects.all()
         # 2 实例化序列化器获取序列化对象
-        serialers = StudentModelSerializers(instance=student_list, many=True)
+        serialers = StudentModelSerializers1(instance=student_list, many=True)
         # 3 转换数据返回给客户端
         return Response(serialers.data, status=status.HTTP_200_OK)
 
@@ -32,7 +32,7 @@ class StudentApiView(APIView):
         """添加一个数据"""
 
         # 1 获取客户端提交的数据,实例化序列化器，获取序列化对象
-        serialer = StudentModelSerializers(data=request.data)
+        serialer = StudentModelSerializers1(data=request.data)
         # 2 反序列化[验证数据，保存数据到数据库]
         serialer.is_valid(raise_exception=True)
         serialer.save()
@@ -85,7 +85,7 @@ class StudentInfoApiView(APIView):
 
 class StudentGenericAPIView(GenericAPIView):
     queryset = Student.objects.all()
-    serializer_class = StudentModelSerializers
+    serializer_class = StudentModelSerializers1
 
     def get(self, request):
         """获取模型所有信息"""
@@ -109,7 +109,7 @@ class StudentGenericAPIView(GenericAPIView):
 
 class StudentInfoGenericAPIView(GenericAPIView):
     queryset = Student.objects.all()
-    serializer_class = StudentModelSerializers
+    serializer_class = StudentModelSerializers1
 
     def get(self, request, pk):
         """获得一个数据"""
@@ -164,7 +164,7 @@ from rest_framework.mixins import CreateModelMixin
 
 class StudentMixinsAPIView(GenericAPIView, ListModelMixin, CreateModelMixin):
     queryset = Student.objects.all()
-    serializer_class = StudentModelSerializers
+    serializer_class = StudentModelSerializers1
 
     def get(self, request):
         """获取所有数据"""
@@ -182,7 +182,7 @@ from rest_framework.mixins import UpdateModelMixin
 
 class StudentInfoMixinsAPIView(GenericAPIView, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin):
     queryset = Student.objects.all()
-    serializer_class = StudentModelSerializers
+    serializer_class = StudentModelSerializers1
 
     def get(self, request, pk):
         """获取一个数据"""
@@ -219,12 +219,12 @@ from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveDestroyA
 class StudentView(ListAPIView, CreateAPIView):
     queryset = Student.objects.all()
     # 假如想修改里面数据那就写get 方法，就是继承父类的一些信息
-    serializer_class = StudentModelSerializers
+    serializer_class = StudentModelSerializers1
 
 
 class StudentInfoView(RetrieveDestroyAPIView):
     queryset = Student.objects.all()
-    serializer_class = StudentModelSerializers
+    serializer_class = StudentModelSerializers1
 
 
 """
@@ -245,14 +245,14 @@ class StudentViewSet(ViewSet):
         # 1 获取学生列表信息
         student_list = Student.objects.all()
         # 2 实例化序列化器获取序列化对象
-        serialers = StudentModelSerializers(instance=student_list, many=True)
+        serialers = StudentModelSerializers1(instance=student_list, many=True)
         # 3 转换数据返回给客户端
         return Response(serialers.data, status=status.HTTP_200_OK)
 
     def create_student(self, request):
         """添加一个数据"""
         # 1 获取客户端提交的数据,实例化序列化器，获取序列化对象
-        serialer = StudentModelSerializers(data=request.data)
+        serialer = StudentModelSerializers1(data=request.data)
         # 2 反序列化[验证数据，保存数据到数据库]
         serialer.is_valid(raise_exception=True)
         serialer.save()
@@ -269,7 +269,7 @@ class StudentViewSet(ViewSet):
         except:
             return Response(status=status.HTTP_404_NOT_FOUND)
         # 2、 实例化序列化器获取序列化对象
-        serialer = StudentModelSerializers(instance=student)
+        serialer = StudentModelSerializers1(instance=student)
         # 3、 转换数据返回给客户端
         return Response(serialer.data, status=status.HTTP_200_OK)
 
@@ -278,7 +278,7 @@ class StudentViewSet(ViewSet):
             student = Student.objects.get(pk=pk)
         except:
             return Response(status=status.HTTP_404_NOT_FOUND)
-        serialer = StudentModelSerializers(instance=student, data=request.data)
+        serialer = StudentModelSerializers1(instance=student, data=request.data)
         # 3 反序列化[验证数据和保存数据]
         serialer.is_valid(raise_exception=True)
         serialer.save()
@@ -300,7 +300,7 @@ from rest_framework.viewsets import GenericViewSet
 
 class StudentGenericViewSet(GenericViewSet):
     queryset = Student.objects.all()
-    serializer_class = StudentModelSerializers
+    serializer_class = StudentModelSerializers1
 
     def get_student_list(self, request):
         """获取模型所有信息"""
@@ -356,7 +356,7 @@ class StudentMixinsViewSet(GenericViewSet, ListModelMixin, CreateModelMixin, Ret
                            DestroyModelMixin):
     queryset = Student.objects.all()
     # 假如想修改里面数据那就写get 方法，就是继承父类的一些信息
-    serializer_class = StudentModelSerializers
+    serializer_class = StudentModelSerializers1
 
 
 """
@@ -371,7 +371,7 @@ from rest_framework.viewsets import ReadOnlyModelViewSet
 class StudentReadOnlyModelViewSet(ReadOnlyModelViewSet, CreateModelMixin, UpdateModelMixin, DestroyModelMixin):
     queryset = Student.objects.all()
     # 假如想修改里面数据那就写get 方法，就是继承父类的一些信息
-    serializer_class = StudentModelSerializers
+    serializer_class = StudentModelSerializers1
 
 
 from rest_framework.viewsets import ModelViewSet
@@ -381,7 +381,7 @@ from rest_framework.decorators import action
 class StudentModelViewSet(ModelViewSet): # 万能视图 最常用的这个类
     queryset = Student.objects.all()
     # 假如想修改里面数据那就写get 方法，就是继承父类的一些信息
-    serializer_class = StudentModelSerializers
+    serializer_class = StudentModelSerializers1
     # action 参数将ViewSet方法标记为可路由操作。
     # methods:此操作响应的HTTP方法名称的列表。默认为“get”。
     # detail:必需。确定此操作是否适用于实例/细节请求或集合/列表请求。

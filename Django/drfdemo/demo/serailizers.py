@@ -2,7 +2,7 @@ from rest_framework import serializers
 from stuapi.models import Student
 
 
-class StudentModelSerializers(serializers.ModelSerializer):
+class StudentModelSerializers1(serializers.ModelSerializer):
     class Meta:
         model=Student
         fields = "__all__"

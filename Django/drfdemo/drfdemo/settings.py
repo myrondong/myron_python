@@ -37,17 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
+    'rest_framework',  # 添加drf
+    'django_filters',  # 添加过滤器
+    'coreapi', # pip3 install coreapi
+    'drf_yasg' ,#pip3 install drf-yasg
     'students',  # dj 原生实现的API接口
     'stuapi',  # drf 实现的API接口
     'ser',  # 序列化器学习
     'reqs',  # drf 提供请求响应
     'demo',  # drf提供请求和响应
     'school',  # 序列化器嵌套
-    'homework', # 作业练习
-    'opt', # drf 提供组件使用
+    'homework',  # 作业练习
+    'opt',  # drf 提供组件使用
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -136,15 +138,49 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 """
 全局配置
 drf配置信息必须全部写在REST_FRAMEWORK配置项中
+全局会被局部覆盖
+https://blog.csdn.net/dangfulin/article/details/122868609
 """
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'drfdemo.authentication.CustomerAuthentication',  # 自定义认证
-        'rest_framework.authentication.SessionAuthentication',  # session认证
-        'rest_framework.authentication.BasicAuthentication',    # 基本认证
+        # 'drfdemo.authentication.CustomerAuthentication',  # 自定义认证
+        # 'rest_framework.authentication.SessionAuthentication',  # session认证
+        # 'rest_framework.authentication.BasicAuthentication',    # 基本认证
     ),
+    # 权限设置
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated'
+
+        # 大部分企业内部不允许其他人随意访问，都会默认IsAuthenticated针对login页面
+        # 针对login页面，可以在登录视图视图类设置permissons_classes=[] 因为局部会覆盖全局的设置局部优先级高
+        # 'rest_framework.permissions.IsAuthenticated'
     ],
+    # 限流设置
+    'DEFAULT_THROTTLE_CLASSES': [  # 指定限流器
+        # 'rest_framework.throttling.AnonRateThrottle',  # 已认证用户未登录
+        # 'rest_framework.throttling.UserRateThrottle'   # 未认证用户已登录
+        'rest_framework.throttling.ScopedRateThrottle'  # 自定义限流
+    ],
+    'DEFAULT_THROTTLE_RATES': {  # 指定限流周期
+        'anon': '1/day',  # 针对游客访问进行限制，实际上drf只识别首字母为了提高代码维护性建议写全
+        'user': '3/day',  # 针对会员限制
+        'member': '3/day',
+        'vip': '2/m',
+        'vvip': '3/m'
+    },
+    # 过滤查询全局配置
+    'DEFAULT_FILTER_BACKENDS': [
+        # 'django_filters.rest_framework.DjangoFilterBackend', # 过滤
+        'rest_framework.filters.OrderingFilter' # 排序
+    ],
+    # 分页[基本不会使用全局配置]
+    # 'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.LimitOffsetPagination', #  偏移量分页器
+    'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.PageNumberPagination', # 页码分页器
+    'PAGE_SIZE':5 ,# 单页数据量
+
+    # 自定义异常处理
+    'EXCEPTION_HANDLER':'opt.exception.exception_handlerss',
+
+    # 接口文档生成
+    'DEFAULT_SCHEMA_CLASS':"rest_framework.schemas.AutoSchema",
 }
