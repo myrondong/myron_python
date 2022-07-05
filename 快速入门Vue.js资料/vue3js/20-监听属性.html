@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.3.2.36.js"></script>
+<body>
+    <div id="app">
+
+        <button @click="num++">+</button>
+        <input type="text" v-model="num">
+        <button @click="num--">-</button>
+    </div>
+    <script>
+        
+        var vm =  Vue.createApp({
+             data(){ 
+                 return{
+                    num:0,
+                    max:10,
+                 }
+             },
+             watch:{ //watch当中的所有方法名，就是data或者就是computed的变量
+                num(){//此处监控num变化，num改变自动调用这个方法
+                    if(this.num <0){
+                        this.num=0;
+                        alert('不能小于0');
+                    }
+                    if(this.num >this.max){
+                        this.num=this.max
+                        alert('超过最大数字'+this.max);
+                    }
+                }
+             }
+        }).mount("#app"); // mount 绑定的是我们vue 的视图模板，将来显示和
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.3.2.36.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 事件用法一 -->
+        <button @click="number++">点赞{{number}}</button><br>
+        <!-- 事件用法二 使用函数方法进行所谓的添加事件,如果函数没有参数小括号可以省略。-->
+        <button @click="zan()">点赞{{total}}</button><br>
+        
+        <button @click.once="number1+=2">点赞{{number1}}</button><br>
+        <button @click="zan2(3)">点赞{{number2}}</button><br>
+    </div>
+    <script>
+        var vm = Vue.createApp(
+            {
+                data() {
+            
+                    return {
+                        number:0,
+                        total:0,
+                        number1:0,
+                        number2:0,
+            }
+        },methods: {
+            zan(){
+                this.total++;
+            },
+            zan2(x){
+                this.number2+=x;
+            },
+        },
+    
+    }).mount("#app")
+    </script>
+</body>
+</html>

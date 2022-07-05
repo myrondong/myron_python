@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.3.2.36.js"></script>
+</head>
+<!-- 
+    双标签显示纯文本时候{{}}完成显示，{{}}还支持js表达式和符合js的语法的代码，列入函数调用.
+    例如这样使用toUpperCase().split('')
+    单双表签 使用v-model    
+    v-html 必须写在双标签中单表签元素或者表单元素都不能使用。
+    是可以使html代码真正执行出来而不是单纯简单文字打印出来。
+
+ -->
+
+<body>
+    <div id="app" >
+        <p>
+            {{message.toUpperCase().split('')}}
+        </p>
+        <input type="text" name="" id="" v-model="message">
+        <p v-html="img">
+        </p>
+    </div>
+    <!-- table<tr*4 可以直接打印出来下面的四组-->
+
+    <script>
+        var vm = Vue.createApp({
+            data() {
+                return {
+                    message:'hello',
+                    img:`<img src="img/ad.jpg" alt="">`
+                }
+            },
+
+        }).mount("#app");
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.3.2.36.js"></script>
+    <style>
+        table{
+            border: 1xp solid red;
+            border-collapse: collapse;
+        }
+        tr {
+            border: 1xp solid red;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1xp solid red;
+            border-collapse: collapse;
+            width: 120xp;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .btn{
+            width: 40px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- table>tr*4>td*4 -->
+        <table border="1xp">
+            <tr>
+                <td>标题</td>
+                <td>价格</td>
+                <td>库存</td>
+                <td>数量</td>
+                <td>总计</td>
+            </tr>
+            <tr>
+                <td>python 入门</td>
+                <td>{{price}}</td>
+                <td>{{store}}</td>
+                <td>
+                    <button @click="num++">+</button>
+                    <input class='btn' type="text" name="" id="" v-model="num">
+                    <button @click="zan">-</button>
+                </td>
+                <td>
+                    <!--这个属于vue 方法toFixed(2)保留数字两位小数 -->
+                    {{(price*num).toFixed(2)}}
+                </td>
+            </tr>
+          </table>
+    </div>
+    <script>
+        var vm = Vue.createApp({
+            data(){
+                return{
+                    num:0,
+                    store:32,
+                    price:26.30,
+                }
+            },
+            methods:{
+                zan(){
+                    if(this.num>0){
+                        this.num--
+                    }
+                },
+            }
+        }).mount("#app")
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.3.2.36.js"></script>
+  <style>
+    input[type=text]{
+      width: 60;
+      height: 32px;
+    }
+  </style>
+
+</head>
+<body>
+  <div id="app">
+     
+      <input type="password" v-model="ha">
+      <p>
+        {{ha}}
+        
+      </p>
+      <p>
+        {{pwd}}
+      </p>
+  </div>
+  <script>
+    var vm= Vue.createApp({
+      data(){
+        return{
+            pwd:''
+        }
+      },
+      computed:{//计算属性，实际上每个方法在html都是一个变量，这个已有变量的变量基础上通过计算得来的
+        ha:{
+          get(){//类似高级语言get， set也是
+            return atob(this.pwd);
+          },
+          set(data){
+            
+            this.pwd =  btoa(data);
+          }
+        }
+    
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>

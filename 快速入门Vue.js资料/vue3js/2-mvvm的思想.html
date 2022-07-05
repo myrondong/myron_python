@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.3.2.36.js"></script>
+</head>
+<body>
+    <!-- // v-model vm自带 -->
+    <div id="app">
+        <p>num={{num}}</p>
+        
+        <input type="text" v-model.number="num">
+    </div>
+
+    <script>
+        var vm =Vue.createApp({
+            data(){ //data 声明所有数据都被vm对象进行遍历循环，赋值给vm对象作为属性。
+                    //我们要访问操作data里面数据直接通过this访问
+                return{
+                    num:0,
+
+                }
+            },
+            mounted() {
+                //vue 在加载html完成后，自动执行到这里
+                //setInterval 提供定时器，参数一匿名函数或者函数名，参数2间隔时间
+                setInterval(()=>{
+                    this.num=this.num+1 //this 表示vm对象
+                    console.log(this.num);
+                },1000);
+            },
+        }).mount("#app");
+   
+
+    </script>
+    
+</body>
+</html>

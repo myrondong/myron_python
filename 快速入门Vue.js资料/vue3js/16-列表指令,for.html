@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.3.2.36.js"></script>
+    <style>
+      table,tr,th,td{
+        text-align: center;
+        border-collapse: collapse;
+        border: 1px solid red;
+      }
+      th,td{
+        height: 32px;
+        width: 120px;
+        line-height: 32px;
+        vertical-align: middle;
+      }
+    </style>
+</head>
+<body>
+  <div id="app">
+    <table>
+      <tr>
+        <th>序号</th>
+        <th>ID</th>
+        <th>名称</th>
+        <th>年龄</th>
+        <th>性别</th>
+      </tr>
+      <!-- <tr v-for="item in items">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.sex}}</td>
+      </tr> -->
+      <tr v-for="item,key in items">
+        <td>{{key}}</td> 
+        <!-- 倒叙写法 <td>{{items.length-key}}</td> -->
+        <td>{{item.id}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.name}}</td>
+        <td v-if="item.sex==true">男</td>
+        <td vi-else-if="item.sex==false">女</td>
+        <!-- <td>{{item.sex}}</td> -->
+      </tr>
+    </table>
+  </div>
+
+    <script>
+        var vm = Vue.createApp({
+            data(){
+                return{
+                  items: [
+                      { 'id': 1,'name':'xiaoming','age':18,'sex':true }, 
+                      { 'id': 2,'name':'xiaowang','age':15,'sex':true }, 
+                      { 'id': 3,'name':'hong','age':17,'sex':true }, 
+                      { 'id': 4,'name':'hua','age':13,'sex':false }, 
+
+                      
+                  ]
+                }
+            },
+
+        }).mount('#app')
+    </script>
+</body>
+</html>

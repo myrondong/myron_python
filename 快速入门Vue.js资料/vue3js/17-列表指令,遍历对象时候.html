@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.3.2.36.js"></script>
+    <style>
+      table,tr,th,td{
+        text-align: center;
+        border-collapse: collapse;
+        border: 1px solid red;
+      }
+      th,td{
+        height: 32px;
+        width: 120px;
+        line-height: 32px;
+        vertical-align: middle;
+      }
+    </style>
+</head>
+<body>
+  <div id="app">
+      <ul>
+        <li>{{myObject.id}}</li>
+        <li>{{myObject.name}}</li>
+        <li>
+          <ul>
+            <li  v-for="key,value in myObject.attr">{{key}}:{{value}}</li>
+          </ul>
+        </li>
+      </ul>
+  </div>
+
+    <script>
+        var vm = Vue.createApp({
+            data(){
+                return{
+                  myObject: {
+                    id:1,
+                    name:'python',
+                    attr:{
+                        title: 'How to do lists in Vue',
+                        author: 'Jane Doe',
+                        publishedAt: '2020-03-22'
+                    },
+                    
+
+                  }
+                }
+            },
+
+        }).mount('#app')
+    </script>
+</body>
+</html>

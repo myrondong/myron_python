@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.3.2.36.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p v-if="role==2">欢迎尊敬的客户，来到我们网站</p>
+    <p v-else-if="role==1">欢迎尊敬的会员，来到我们网站</p>
+    <p v-else="role==0">欢迎尊敬的游客，来到我们网站</p>
+
+  </div>
+    <script>
+        var vm = Vue.createApp({
+            data(){
+                return{
+                  is_login:true,
+                  role:1, //0 没有登录 1 普通会员 2vip
+                }
+            },
+
+        }).mount('#app')
+    </script>
+</body>
+</html>

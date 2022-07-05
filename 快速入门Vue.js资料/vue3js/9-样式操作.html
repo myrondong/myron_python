@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.3.2.36.js"></script>
+    <style>
+        .cls1{
+            color: rgb(246, 17, 17);
+        }
+        .cls2{
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!-- 3 6 比较常用其他知道下可以了 -->
+            <li class="cls1">1</li>
+            <li class="cls1 cls2">2</li>
+            <!-- 数组输出 -->
+            <li :class="[exterior1,exterior2]">3</li>
+            <!-- 字符串方式输出 -->
+            <li :class="exterior1">4</li>
+            <li :class="{cls1:false,cls2:add_is_cls2}" @click="this.add_is_cls2 =! this.add_is_cls2">5</li>
+            <li :class="exterior3" @click="this.exterior3.cls1 =! this.exterior3.cls1">6</li>
+        </ul>
+    </div>
+    
+
+    <script>
+        var vm = Vue.createApp({
+            data() {
+                return {
+                    exterior1:'cls1',
+                    exterior2:'cls2',
+                    a:10,
+                    add_is_cls2:true,
+                    exterior3:{
+                        cls1:true,
+                        cls2:true
+                    }
+                }
+            }, methods:{
+                zan(){
+                    if(this.num>0){
+                        this.num--
+                    }
+                },
+            },
+            methods:{
+                change_cls2(){
+                        this.add_is_cls2 =! this.add_is_cls2
+                    
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

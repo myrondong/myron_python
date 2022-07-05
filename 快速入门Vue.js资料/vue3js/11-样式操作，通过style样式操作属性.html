@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.3.2.36.js"></script>
+    <style>
+      #optioncard .titlebar span{
+        height: 32px;
+        line-height: 32px;
+        display: block;
+        width: 100px;
+        vertical-align: middle;
+        text-decoration: none;
+        text-align: center;
+        background-color: #afafaf;
+        color: #000;
+        float: left;
+        margin-right: 5px;
+      }  
+      #optioncard .titlebar::after{
+        clear: both;
+        display: block;
+        content: "";
+      }
+      #optioncard .content .contentbox{
+        width: 500px;
+        height: 350px;
+        background-color: rgb(250, 254, 2);
+        display: none;
+      }
+      #optioncard .content .active{
+
+        display: block;
+      }
+      #optioncard .titlebar .newest{
+        background-color: rgb(250, 254, 2);
+      }
+    </style>
+</head>
+<body>
+    <div id="optioncard">
+        <div class="titlebar">
+            <span  :class="{newest:current_title=='体育新闻'}" @click="current_title='体育新闻'">体育新闻</span>
+            <span  :class="{newest:current_title=='财经新闻'}" @click="current_title='财经新闻'">财经新闻</span>
+            <span  :class="{newest:current_title=='娱乐八卦'}" @click="current_title='娱乐八卦'">娱乐八卦</span>
+        </div>
+        <div class="content">
+            
+        <div :class="{contentbox:true, active:current_title=='体育新闻'}" >
+            体育新闻            
+        </div>
+        <div :class="{contentbox:true, active:current_title=='财经新闻'}">
+            财经新闻
+        </div>
+        <div :class="{contentbox:true, active:current_title=='娱乐八卦'}">
+            娱乐八卦
+        </div>
+    </div>
+    </div>
+    <script>
+        var vm = Vue.createApp({
+            data(){
+                return{
+                    current_title:'体育新闻',
+                }
+            },
+
+        }).mount('#optioncard')
+    </script>
+</body>
+</html>

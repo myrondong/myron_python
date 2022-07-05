@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.3.2.36.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li style="background-color: orange;">1</li>
+            <li style="background-color: rgb(163, 41, 45);color:blue">2</li>
+            <li :style="{'background-color':'orange'}">3</li>
+            <li :style="{backgroundColor:'orange'}">4</li>
+            <li :style="{backgroundColor:'orange', color :'blue'}" >5</li>
+            <li :style="[sty1,sty2]" @click="change_sty">6</li>
+        </ul>
+    </div>
+  
+    <script>
+        var vm = Vue.createApp({
+        data(){
+            return{
+                sty1:{
+                    backgroundColor:'orange', 
+                    color :'blue',
+                },
+                sty2:{
+                    fontSize:'32px',
+
+
+                },
+            }
+        },methods:{
+            change_sty(){
+                if(this.sty1.color == 'blue'){
+                    this.sty1.color = 'red'
+                }else{
+                    this.sty1.color ='blue'
+                }
+            }
+            
+        }
+
+    }).mount('#app')
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.3.2.36.js"></script>
+    <style>
+        select，option{
+            width: 120px;
+        }
+    </style>
+<body>
+    <div id="app">
+        省:<select v-model="province" id="">
+            <option :value="province.name" v-for="province in province_list">{{province.name}}</option>
+        </select>
+        市:<select name="city" id="">
+            <option :value="city.name" v-for="city in city_list">{{city.name}}</option>
+        </select>
+        地区:<select v-model="are" id="">
+            <option :value="are.name" v-for="are in are_list" >{{are.name}}</option>
+        </select>
+        
+    </div>
+    <script>
+        
+        var vm =  Vue.createApp({
+             data(){ 
+                 return{
+                    province:'',
+                    city:'',
+                    are:'',
+                    cities:[],
+                    province_list:[
+                    {id:1,name:'湖南'},
+                    {id:2,name:'安徽'},
+                    {id:3,name:'广东'},
+                    ],
+                    city_list:[
+                    {id:4,name:'长沙',pid:1},
+                    {id:5,name:'岳阳',pid:1},
+                    {id:6,name:'合肥',pid:2},
+                    {id:7,name:'芜湖',pid:2},
+                    {id:8,name:'深圳',pid:3},
+                    {id:9,name:'广州',pid:3},
+                    ],
+                    are_list:[
+                    {id:10,name:'芙蓉区',pid:4},
+                    {id:11,name:'B区',pid:5},
+                    {id:12,name:'蜀山区',pid:6}, 
+                    {id:13,name:'镜湖区',pid:7},
+                    {id:14,name:'C区',pid:8},
+                    {id:15,name:'天河区',pid:9},
+                    ]
+                 }
+             },
+             watch:{ //watch当中的所有方法名，就是data或者就是computed的变量
+                province(){//
+                    let id_province=-1;
+                    for(let provinces of this.province_list){
+                        if(provinces.name == this.province){
+                            id_province=provinces.id;
+                            break;
+                        }
+                    }
+                    this.cities=[]
+                    for(let index in this.city_list){
+                        if(this.city_list[key].pid === parseInt(id_province)){
+                            this.cities.push(this.city_list[key]) // 给数组增加成员
+                        }
+                    }
+                }
+
+
+             }
+        }).mount("#app"); // mount 绑定的是我们vue 的视图模板，将来显示和
+
+    </script>
+</body>
+</html>

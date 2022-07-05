@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.3.2.36.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- {{message}} 表示把vue对象data里面数据对应传到页面中
+             在双标签显示需要{{}}来完成
+         -->
+        <p>{{message}}</p>
+        <p>{{num}}</p>
+         
+    </div>
+    <script>
+        // vue js开始于一个vue对象所以每次数据操作从vue对象开始。
+        var vm =  Vue.createApp({
+             data(){ // data是要展示到html 标签元素的数据，一般这里data设置vue要使用的变量
+                 return{
+                    message:"就是这个数据，一般来自服务端，客户端通过ajax来请求",
+                     num:18,
+                 }
+             }
+        }).mount("#app"); // mount 绑定的是我们vue 的视图模板，将来显示和
+
+    </script>
+</body>
+</html>

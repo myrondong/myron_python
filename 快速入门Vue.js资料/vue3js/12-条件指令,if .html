@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.3.2.36.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p v-if="is_login">欢迎尊敬的客户，来到我们网站</p>
+    <p v-if="!is_login">欢迎尊敬的游客，来到我们网站</p>
+  </div>
+    <script>
+        var vm = Vue.createApp({
+            data(){
+                return{
+                  is_login:false,
+                }
+            },
+
+        }).mount('#app')
+    </script>
+</body>
+</html>
